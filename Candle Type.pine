@@ -1,0 +1,19 @@
+//@version=3
+// Candle Type Pine Script
+// (c)2018 Crinklebine Crinklebine.com
+study("Candle Type (The Strat)", overlay=true, precision=0)
+
+// write text credit
+plotshape(true, title="Crinklebine Version 4", style=shape.cross, color=#0080FF, location=location.bottom, text="Crinklebine.com", textcolor=#0080FF, show_last=1)
+
+// check for candle type 1 (inside candle) and plot an identifier
+barResult1 = high <= high[1] and low >= low[1]
+plotchar(barResult1, title="Bar Type 1 Label", char="1", location=location.belowbar, color=#0080FF)
+
+// check for candle type 2 (up or down candle) and plot an identifier
+barResult2 = (high > high[1] or low < low[1]) and not (high > high[1] and low < low[1])
+plotchar(barResult2, title="Bar Type 2 Label", char="2", location=location.belowbar, color=#0080FF)
+
+// check for candle type 3 (engulfing candle) and plot an identifier
+barResult3 = high > high[1] and low < low[1]
+plotchar(barResult3, title="Bar Type 3 Label", char="3", location=location.belowbar, color=#0080FF)
